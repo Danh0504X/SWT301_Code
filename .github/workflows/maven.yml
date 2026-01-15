@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   security-events: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,6 +30,7 @@ jobs:
         run: mvn -B -U package
 
       - name: Update dependency graph (UnitTest_Slot4)
+        if: github.event_name == 'push'
         uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
         with:
           directory: UnitTest_Slot4
