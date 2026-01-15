@@ -19,15 +19,13 @@ jobs:
           java-version: "21"
           distribution: "temurin"
           cache: maven
-          # cache đúng cho pom.xml nằm trong thư mục con
           cache-dependency-path: UnitTest_Slot4/pom.xml
 
       - name: Build with Maven (UnitTest_Slot4)
         working-directory: UnitTest_Slot4
         run: mvn -B -U package
 
-      # Optional: Upload dependency graph (chạy đúng thư mục)
       - name: Update dependency graph (UnitTest_Slot4)
         uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
         with:
-          working-directory: UnitTest_Slot4
+          directory: UnitTest_Slot4
