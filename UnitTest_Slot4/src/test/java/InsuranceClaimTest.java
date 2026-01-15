@@ -1,5 +1,5 @@
 
-import com.danhlo.lab2_swt301.InsuranceClaim;
+import com.danhlo.UnitTest_Slot4.InsuranceClaim;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
