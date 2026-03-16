@@ -13,6 +13,14 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - UnitTest_Slot4
+          - Exercise1_SeleniumBasic
+          - Exercise6_FEMS_TEST
+          - account-junit-lab2
 
     steps:
       - uses: actions/checkout@v4
@@ -23,14 +31,14 @@ jobs:
           java-version: "21"
           distribution: "temurin"
           cache: maven
-          cache-dependency-path: UnitTest_Slot4/pom.xml
+          cache-dependency-path: ${{ matrix.project }}/pom.xml
 
-      - name: Build with Maven (UnitTest_Slot4)
-        working-directory: UnitTest_Slot4
+      - name: Build with Maven
+        working-directory: ${{ matrix.project }}
         run: mvn -B -U package
 
-      - name: Update dependency graph (UnitTest_Slot4)
+      - name: Update dependency graph
         if: github.event_name == 'push'
         uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
         with:
-          directory: UnitTest_Slot4
+          directory: ${{ matrix.project }}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipment Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+        }
+
+        input, button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Equipment Management</h2>
+
+    <input type="text" id="equipment-name" placeholder="Equipment Name">
+    <input type="text" id="equipment-type" placeholder="Equipment Type">
+    <input type="number" id="equipment-quantity" placeholder="Quantity">
+
+    <button id="add-btn" type="button">Add Equipment</button>
+
+    <table id="equipment-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+    document.getElementById("add-btn").addEventListener("click", function () {
+        const name = document.getElementById("equipment-name").value.trim();
+        const type = document.getElementById("equipment-type").value.trim();
+        const quantity = document.getElementById("equipment-quantity").value.trim();
+
+        if (!name || !type || !quantity) {
+            return;
+        }
+
+        const tbody = document.querySelector("#equipment-table tbody");
+        const row = document.createElement("tr");
+
+        const tdName = document.createElement("td");
+        tdName.textContent = name;
+
+        const tdType = document.createElement("td");
+        tdType.textContent = type;
+
+        const tdQuantity = document.createElement("td");
+        tdQuantity.textContent = quantity;
+
+        row.appendChild(tdName);
+        row.appendChild(tdType);
+        row.appendChild(tdQuantity);
+
+        tbody.appendChild(row);
+    });
+</script>
+</body>
+</html>

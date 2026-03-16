@@ -1,0 +1,5 @@
+username,password,expectedResult
+admin1,123456,success
+wronguser,123456,fail
+admin1,wrongpass,fail
+,123456,fail
